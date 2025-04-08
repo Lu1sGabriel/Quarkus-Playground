@@ -4,7 +4,7 @@ services:
     container_name: postgres-quarkus
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: @JavaQuarkus
+      POSTGRES_PASSWORD: _JavaQuarkus
       POSTGRES_DB: java-with-quarkus-data-base
     ports:
       - "5432:5432"
