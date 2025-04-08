@@ -1,0 +1,14 @@
+services:
+  data-base:
+    image: postgres
+    container_name: postgres-quarkus
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: @JavaQuarkus
+      POSTGRES_DB: java-with-quarkus-data-base
+    ports:
+      - "5432:5432"
+    volumes:
+      - quarkus_pgdata:/var/lib/postgresql/data
+volumes:
+  quarkus_pgdata:
