@@ -16,9 +16,9 @@ public class GlobalExceptionHandler implements ExceptionMapper<Throwable> {
     public Response toResponse(Throwable exception) {
         final ErrorResponse error;
 
-        if (exception instanceof ApiException.HttpException httpEx) {
-            error = new ErrorResponse(httpEx.getMessage(), StatusCode.fromCode(httpEx.getStatusCode()));
-            return Response.status(httpEx.getStatusCode()).entity(error).build();
+        if (exception instanceof ApiException.HttpException httpException) {
+            error = new ErrorResponse(httpException.getMessage(), httpException.getStatusCode());
+            return Response.status(httpException.getStatusCode()).entity(error).build();
         }
 
         LOGGER.error("Unhandled exception: ", exception);

@@ -4,10 +4,9 @@ import org.luis.goes.domain.exception.StatusCode;
 
 public record ErrorResponse(
         String message,
-        StatusCode statusCode
+        int statusCode
 ) {
     public ErrorResponse(String message, StatusCode statusCode) {
-        this.message = message;
-        this.statusCode = statusCode;
+        this(message, statusCode.getCode());
     }
 }
