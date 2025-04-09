@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -15,7 +17,10 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserEntity  {
+public class UserEntity implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 132253149922210629L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -33,7 +38,8 @@ public class UserEntity  {
         if (this == o) return true;
         if (o == null) return false;
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
-        Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
+        Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() :
+                this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
         UserEntity that = (UserEntity) o;
         return getId() != null && Objects.equals(getId(), that.getId());
