@@ -17,25 +17,25 @@ public class ApiException {
 
     public static class NotFound extends HttpException {
         public NotFound(String message) {
-            super(message, 404);
+            super(message, StatusCode.NOT_FOUND.getCode());
         }
     }
 
     public static class BadRequest extends HttpException {
         public BadRequest(String message) {
-            super(message, 400);
+            super(message, StatusCode.BAD_REQUEST.getCode());
         }
     }
 
     public static class Unauthorized extends HttpException {
         public Unauthorized(String message) {
-            super(message, 401);
+            super(message, StatusCode.UNAUTHORIZED.getCode());
         }
     }
 
     public static class Forbidden extends HttpException {
         public Forbidden(String message) {
-            super(message, 403);
+            super(message, StatusCode.FORBIDDEN.getCode());
         }
     }
 

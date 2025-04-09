@@ -1,10 +1,12 @@
 package org.luis.goes.infrastructure.presentation.exception;
 
+import org.luis.goes.domain.exception.StatusCode;
+
 public record ErrorResponse(
         String message,
-        int statusCode
+        StatusCode statusCode
 ) {
-    public ErrorResponse(String message, int statusCode) {
+    public ErrorResponse(String message, StatusCode statusCode) {
         this.message = message;
         this.statusCode = statusCode;
     }

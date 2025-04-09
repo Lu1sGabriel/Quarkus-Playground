@@ -3,24 +3,27 @@ package org.luis.goes.infrastructure.presentation.exception;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;
 import jakarta.ws.rs.ext.Provider;
+import org.jboss.logging.Logger;
 import org.luis.goes.domain.exception.ApiException;
+import org.luis.goes.domain.exception.StatusCode;
 
 @Provider
 public class GlobalExceptionHandler implements ExceptionMapper<Throwable> {
 
+    private static final Logger LOGGER = Logger.getLogger(GlobalExceptionHandler.class);
+
     @Override
     public Response toResponse(Throwable exception) {
-        ErrorResponse error;
+        final ErrorResponse error;
 
         if (exception instanceof ApiException.HttpException httpEx) {
-            error = new ErrorResponse(httpEx.getMessage(), httpEx.getStatusCode());
+            error = new ErrorResponse(httpEx.getMessage(), StatusCode.fromCode(httpEx.getStatusCode()));
             return Response.status(httpEx.getStatusCode()).entity(error).build();
         }
 
-        exception.printStackTrace();
+        LOGGER.error("Unhandled exception: ", exception);
 
-        error = new ErrorResponse("Internal server error. That's not your fault!", 500);
-        return Response.status(500).entity(error).build();
+        error = new ErrorResponse("Internal server error. That's not your fault!", StatusCode.INTERNAL_SERVER_ERROR);
+        return Response.status(StatusCode.INTERNAL_SERVER_ERROR.getCode()).entity(error).build();
     }
-
 }
