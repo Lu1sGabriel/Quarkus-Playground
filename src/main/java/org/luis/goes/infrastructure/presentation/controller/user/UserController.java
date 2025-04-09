@@ -4,7 +4,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.luis.goes.domain.entity.user.UserEntity;
-import org.luis.goes.domain.service.user.UserService;
+import org.luis.goes.application.service.user.UserService;
 
 import java.util.UUID;
 

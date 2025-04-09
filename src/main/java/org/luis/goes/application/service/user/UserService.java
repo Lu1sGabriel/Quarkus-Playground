@@ -1,9 +1,10 @@
-package org.luis.goes.domain.service.user;
+package org.luis.goes.application.service.user;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 import org.luis.goes.domain.entity.user.UserEntity;
 import org.luis.goes.domain.exception.ApiException;
+import org.luis.goes.infrastructure.repository.user.UserRepository;
 
 import java.util.List;
 import java.util.UUID;
@@ -11,17 +12,23 @@ import java.util.UUID;
 @ApplicationScoped
 public class UserService {
 
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
     public UserEntity findById(UUID id) {
-        return UserEntity.<UserEntity>findByIdOptional(id).orElseThrow(() -> new ApiException.NotFound("User not found. "));
+        return userRepository.findByIdOptional(id).orElseThrow(() -> new ApiException.NotFound("User not found."));
     }
 
     public List<UserEntity> findAll(Integer page, Integer pageSize) {
-        return UserEntity.findAll().page(page, pageSize).list();
+        return userRepository.findAll().page(page, pageSize).list();
     }
 
     @Transactional()
     public UserEntity create(UserEntity userEntity) {
-        UserEntity.persist(userEntity);
+        userRepository.persist(userEntity);
         return userEntity;
     }
 
@@ -29,9 +36,9 @@ public class UserService {
     public UserEntity update(UUID id, UserEntity userEntity) {
         var user = findById(id);
 
-        user.name = userEntity.name;
+        user.setName(userEntity.getName());
 
-        UserEntity.persist(user);
+        userRepository.persist(user);
 
         return user;
     }
@@ -39,7 +46,7 @@ public class UserService {
     @Transactional
     public void delete(UUID id) {
         var user = findById(id);
-        UserEntity.deleteById(user.id);
+        userRepository.deleteById(user.getId());
     }
 
 }
