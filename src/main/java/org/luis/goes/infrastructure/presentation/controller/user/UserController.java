@@ -3,8 +3,8 @@ package org.luis.goes.infrastructure.presentation.controller.user;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.luis.goes.domain.entity.user.UserEntity;
 import org.luis.goes.application.service.user.UserService;
+import org.luis.goes.infrastructure.presentation.dto.user.UserRequestDTO;
 
 import java.util.UUID;
 
@@ -34,14 +34,14 @@ public class UserController {
     }
 
     @POST
-    public Response create(UserEntity userEntity) {
-        return Response.ok(userService.create(userEntity)).build();
+    public Response create(UserRequestDTO userRequestDTO) {
+        return Response.ok(userService.create(userRequestDTO)).build();
     }
 
     @PUT
     @Path(value = "/{id}")
-    public Response update(@PathParam(value = "id") UUID id, UserEntity userEntity) {
-        var user = userService.update(id, userEntity);
+    public Response update(@PathParam(value = "id") UUID id, UserRequestDTO userRequestDTO) {
+        var user = userService.update(id, userRequestDTO);
         return Response.ok(user).build();
     }
 
@@ -51,4 +51,5 @@ public class UserController {
         userService.delete(id);
         return Response.noContent().build();
     }
+
 }
