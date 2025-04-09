@@ -1,4 +1,4 @@
-package org.luis.goes.domain.entitite.user;
+package org.luis.goes.domain.entity.user;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.*;

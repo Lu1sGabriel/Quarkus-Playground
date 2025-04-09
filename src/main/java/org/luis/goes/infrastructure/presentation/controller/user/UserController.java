@@ -3,7 +3,7 @@ package org.luis.goes.infrastructure.presentation.controller.user;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.luis.goes.domain.entitite.user.UserEntity;
+import org.luis.goes.domain.entity.user.UserEntity;
 import org.luis.goes.domain.service.user.UserService;
 
 import java.util.UUID;
@@ -38,4 +38,10 @@ public class UserController {
         return Response.ok(userService.create(userEntity)).build();
     }
 
+    @PUT
+    @Path(value = "/{id}")
+    public Response update(@PathParam(value = "id") UUID id, UserEntity userEntity) {
+        var user = userService.updateUser(id, userEntity);
+        return Response.ok(user).build();
+    }
 }

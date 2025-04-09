@@ -2,7 +2,7 @@ package org.luis.goes.domain.service.user;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
-import org.luis.goes.domain.entitite.user.UserEntity;
+import org.luis.goes.domain.entity.user.UserEntity;
 import org.luis.goes.domain.exception.ApiException;
 
 import java.util.List;
@@ -23,6 +23,17 @@ public class UserService {
     public UserEntity create(UserEntity userEntity) {
         UserEntity.persist(userEntity);
         return userEntity;
+    }
+
+    @Transactional
+    public UserEntity updateUser(UUID id, UserEntity userEntity) {
+        var user = getById(id);
+
+        user.name = userEntity.name;
+
+        UserEntity.persist(user);
+
+        return user;
     }
 
 }
