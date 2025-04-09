@@ -22,14 +22,14 @@ public class UserController {
     @GET
     @Path(value = "/{id}")
     public Response getById(@PathParam(value = "id") UUID id) {
-        var user = userService.getById(id);
+        var user = userService.findById(id);
         return Response.ok(user).build();
     }
 
     @GET
     public Response getAll(@QueryParam(value = "page") @DefaultValue("0") Integer page,
                            @QueryParam(value = "pageSize") @DefaultValue("10") Integer pageSize) {
-        var userList = userService.getAll(page, pageSize);
+        var userList = userService.findAll(page, pageSize);
         return Response.ok(userList).build();
     }
 
@@ -41,7 +41,14 @@ public class UserController {
     @PUT
     @Path(value = "/{id}")
     public Response update(@PathParam(value = "id") UUID id, UserEntity userEntity) {
-        var user = userService.updateUser(id, userEntity);
+        var user = userService.update(id, userEntity);
         return Response.ok(user).build();
+    }
+
+    @DELETE
+    @Path(value = "/{id}")
+    public Response delete(@PathParam(value = "id") UUID id) {
+        userService.delete(id);
+        return Response.noContent().build();
     }
 }

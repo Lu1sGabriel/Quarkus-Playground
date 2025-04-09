@@ -11,11 +11,11 @@ import java.util.UUID;
 @ApplicationScoped
 public class UserService {
 
-    public UserEntity getById(UUID id) {
+    public UserEntity findById(UUID id) {
         return UserEntity.<UserEntity>findByIdOptional(id).orElseThrow(() -> new ApiException.NotFound("User not found. "));
     }
 
-    public List<UserEntity> getAll(Integer page, Integer pageSize) {
+    public List<UserEntity> findAll(Integer page, Integer pageSize) {
         return UserEntity.findAll().page(page, pageSize).list();
     }
 
@@ -26,14 +26,20 @@ public class UserService {
     }
 
     @Transactional
-    public UserEntity updateUser(UUID id, UserEntity userEntity) {
-        var user = getById(id);
+    public UserEntity update(UUID id, UserEntity userEntity) {
+        var user = findById(id);
 
         user.name = userEntity.name;
 
         UserEntity.persist(user);
 
         return user;
+    }
+
+    @Transactional
+    public void delete(UUID id) {
+        var user = findById(id);
+        UserEntity.deleteById(user.id);
     }
 
 }
