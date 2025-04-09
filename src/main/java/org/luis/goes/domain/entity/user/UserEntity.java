@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.proxy.HibernateProxy;
+import org.luis.goes.domain.entity.Mappable;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -17,7 +18,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @NoArgsConstructor
-public class UserEntity implements Serializable {
+public class UserEntity implements Serializable, Mappable {
 
     @Serial
     private static final long serialVersionUID = 132253149922210629L;

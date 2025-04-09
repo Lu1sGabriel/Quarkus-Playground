@@ -1,4 +1,6 @@
-package org.luis.goes.domain.exception;
+package org.luis.goes.presentation.exception;
+
+import org.luis.goes.shared.helpers.StatusCode;
 
 public class ApiException {
 

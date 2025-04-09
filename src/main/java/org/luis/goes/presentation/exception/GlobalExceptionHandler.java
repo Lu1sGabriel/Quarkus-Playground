@@ -1,11 +1,10 @@
-package org.luis.goes.infrastructure.presentation.exception;
+package org.luis.goes.presentation.exception;
 
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;
 import jakarta.ws.rs.ext.Provider;
 import org.jboss.logging.Logger;
-import org.luis.goes.domain.exception.ApiException;
-import org.luis.goes.domain.exception.StatusCode;
+import org.luis.goes.shared.helpers.StatusCode;
 
 @Provider
 public class GlobalExceptionHandler implements ExceptionMapper<Throwable> {

@@ -1,6 +1,6 @@
-package org.luis.goes.infrastructure.presentation.exception;
+package org.luis.goes.presentation.exception;
 
-import org.luis.goes.domain.exception.StatusCode;
+import org.luis.goes.shared.helpers.StatusCode;
 
 public record ErrorResponse(
         String message,

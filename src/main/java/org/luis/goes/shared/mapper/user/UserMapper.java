@@ -1,16 +1,16 @@
-package org.luis.goes.application.mapper.user;
+package org.luis.goes.shared.mapper.user;
 
 import jakarta.enterprise.context.ApplicationScoped;
-import org.luis.goes.application.mapper.Mapper;
+import org.luis.goes.shared.mapper.Mapper;
 import org.luis.goes.domain.entity.user.UserEntity;
-import org.luis.goes.infrastructure.presentation.dto.user.UserRequestDTO;
-import org.luis.goes.infrastructure.presentation.dto.user.UserResponseDTO;
+import org.luis.goes.presentation.dto.user.UserRequestDTO;
+import org.luis.goes.presentation.dto.user.UserResponseDTO;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
-public class UserMapper implements Mapper<UserRequestDTO, UserResponseDTO, UserEntity> {
+public final class UserMapper implements Mapper<UserRequestDTO, UserResponseDTO, UserEntity> {
 
     @Override
     public UserEntity toEntity(UserRequestDTO dto) {

@@ -1,10 +1,10 @@
-package org.luis.goes.infrastructure.presentation.controller.user;
+package org.luis.goes.presentation.controller.user;
 
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.luis.goes.application.service.user.UserService;
-import org.luis.goes.infrastructure.presentation.dto.user.UserRequestDTO;
+import org.luis.goes.presentation.dto.user.UserRequestDTO;
 
 import java.util.UUID;
 

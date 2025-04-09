@@ -1,4 +1,4 @@
-package org.luis.goes.infrastructure.presentation.dto.user;
+package org.luis.goes.presentation.dto.user;
 
 import java.util.UUID;
 

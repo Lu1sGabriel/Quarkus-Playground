@@ -1,4 +1,4 @@
-package org.luis.goes.domain.exception;
+package org.luis.goes.shared.helpers;
 
 public enum StatusCode {
     OK(200),

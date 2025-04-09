@@ -1,9 +1,10 @@
-package org.luis.goes.application.mapper;
+package org.luis.goes.shared.mapper;
+
+import org.luis.goes.domain.entity.Mappable;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
-public interface Mapper<RequestDTO, ResponseDTO, Entity> {
+public interface Mapper<RequestDTO, ResponseDTO, Entity extends Mappable> {
 
     // Entrada: DTO → Entity
     Entity toEntity(RequestDTO dto);

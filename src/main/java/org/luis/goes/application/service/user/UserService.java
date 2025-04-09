@@ -2,11 +2,11 @@ package org.luis.goes.application.service.user;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
-import org.luis.goes.application.mapper.user.UserMapper;
+import org.luis.goes.shared.mapper.user.UserMapper;
 import org.luis.goes.domain.entity.user.UserEntity;
-import org.luis.goes.domain.exception.ApiException;
-import org.luis.goes.infrastructure.presentation.dto.user.UserRequestDTO;
-import org.luis.goes.infrastructure.presentation.dto.user.UserResponseDTO;
+import org.luis.goes.presentation.exception.ApiException;
+import org.luis.goes.presentation.dto.user.UserRequestDTO;
+import org.luis.goes.presentation.dto.user.UserResponseDTO;
 import org.luis.goes.infrastructure.repository.user.UserRepository;
 
 import java.util.List;
