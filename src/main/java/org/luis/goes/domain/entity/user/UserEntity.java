@@ -29,9 +29,13 @@ public class UserEntity implements Serializable, Mappable {
     private UUID id;
 
     private String name;
+    private String password;
+    private String email;
 
-    public UserEntity(String name) {
+    public UserEntity(String name, String password, String email) {
         this.name = name;
+        this.password = password;
+        this.email = email;
     }
 
     @Override

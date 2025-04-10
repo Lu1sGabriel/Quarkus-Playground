@@ -1,0 +1,23 @@
+quarkus:
+  datasource:
+    jdbc:
+      url: jdbc:postgresql://localhost:5432/java-with-quarkus-data-base
+    db-kind: postgresql
+    username: postgres
+    password: _JavaQuarkus
+  hibernate-orm:
+    database:
+      generation: drop-and-create
+
+mp:
+  jwt:
+    verify:
+      publickey:
+        location: publicKey.pem
+      issuer: https://example.com/issuer
+
+smallrye:
+  jwt:
+    sign:
+      key:
+        location: privateKey.pem
