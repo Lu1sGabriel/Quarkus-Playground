@@ -8,16 +8,19 @@ quarkus:
   hibernate-orm:
     database:
       generation: drop-and-create
+  http:
+    auth:
+      proactive: false
 
 mp:
   jwt:
     verify:
       publickey:
-        location: publicKey.pem
+        location: /jwt/publicKey.pem
       issuer: https://example.com/issuer
 
 smallrye:
   jwt:
     sign:
       key:
-        location: privateKey.pem
+        location: /jwt/privateKey.pem

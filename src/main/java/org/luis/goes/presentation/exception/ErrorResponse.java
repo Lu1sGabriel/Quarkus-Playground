@@ -6,7 +6,12 @@ public record ErrorResponse(
         String message,
         int statusCode
 ) {
+
+    public ErrorResponse {
+    }
+
     public ErrorResponse(String message, StatusCode statusCode) {
         this(message, statusCode.getCode());
     }
+
 }

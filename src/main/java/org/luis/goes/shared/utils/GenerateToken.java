@@ -17,6 +17,9 @@ public class GenerateToken {
     public String generateToken(UserEntity userEntity) {
         String token = Jwt.issuer(issuer)
                 .upn(userEntity.getEmail())
+                .claim("userId", userEntity.getId())
+                .claim("email", userEntity.getEmail())
+                .expiresAt(System.currentTimeMillis() + 3600)
                 .groups(new HashSet<>(Arrays.asList("User")))
                 .sign();
         return token;

@@ -48,4 +48,5 @@ nb-configuration.xml
 mvnw
 mvnw.cmd
 
-/src/main/resources/privateKey.pem
+/src/main/resources/jwt/privateKey.pem
+/src/main/resources/jwt/rsaPrivateKey.pem

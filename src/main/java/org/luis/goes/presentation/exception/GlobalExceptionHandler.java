@@ -13,14 +13,12 @@ public class GlobalExceptionHandler implements ExceptionMapper<Throwable> {
 
     @Override
     public Response toResponse(Throwable exception) {
-        final ErrorResponse error;
+        ErrorResponse error;
 
         if (exception instanceof ApiException.HttpException httpException) {
             error = new ErrorResponse(httpException.getMessage(), httpException.getStatusCode());
             return Response.status(httpException.getStatusCode()).entity(error).build();
         }
-
-        LOGGER.error("Unhandled exception: ", exception);
 
         error = new ErrorResponse("Internal server error. That's not your fault!", StatusCode.INTERNAL_SERVER_ERROR);
         return Response.status(StatusCode.INTERNAL_SERVER_ERROR.getCode()).entity(error).build();
